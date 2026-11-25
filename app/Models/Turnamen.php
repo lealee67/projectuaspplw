@@ -11,9 +11,6 @@ class Turnamen extends Model
     // Laravel akan menebak "turnamens", jadi nama tabel wajib ditulis eksplisit
     protected $table = 'turnamen';
 
-    // Tabel turnamen tidak punya created_at / updated_at (sesuai ERD)
-    public $timestamps = false;
-
     protected $fillable = [
         'kategori_kompetisi_id',
         'nama_turnamen',
