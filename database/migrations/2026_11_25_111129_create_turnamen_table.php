@@ -25,6 +25,7 @@ return new class extends Migration
             $table->unsignedInteger('kuota_peserta');
             $table->decimal('biaya_pendaftaran', 12, 2)->default(0);
             $table->string('status')->default('dibuka'); // dibuka / berlangsung / selesai / ditutup
+            $table->timestamps();
         });
     }
     public function down(): void
