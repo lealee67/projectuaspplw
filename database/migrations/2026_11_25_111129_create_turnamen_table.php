@@ -13,13 +13,20 @@ return new class extends Migration
     {
         Schema::create('turnamen', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+
+            // Proteksi hapus master: kategori yang dipakai turnamen tidak bisa dihapus
+            $table->foreignId('kategori_kompetisi_id')
+                ->constrained('kategori_kompetisi')
+                ->restrictOnDelete();
+
+            $table->string('nama_turnamen');
+            $table->date('tanggal_mulai');
+            $table->date('tanggal_selesai');
+            $table->unsignedInteger('kuota_peserta');
+            $table->decimal('biaya_pendaftaran', 12, 2)->default(0);
+            $table->string('status')->default('dibuka'); // dibuka / berlangsung / selesai / ditutup
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('turnamen');
