@@ -9,6 +9,6 @@ class Game extends Model
     protected $fillable = ['nama_game', 'developer', 'status'];
 
     public function kategoriKompetisi(){
-        return $this->hasMany(KategotiKompetisi::class);
+        return $this->hasMany(KategoriKompetisi::class);
     }
 }
