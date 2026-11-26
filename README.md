@@ -103,9 +103,7 @@ Basis data terdiri dari **11 tabel**: 2 pendukung, 3 master, dan 6 tabel transak
 
 
 
-```mermaid
 erDiagram
-    roles ||--o{ erDiagram
     roles ||--o{ users : memiliki
     games ||--o{ kategori_kompetisi : memiliki
     kategori_kompetisi ||--o{ turnamen : digunakan
@@ -222,7 +220,6 @@ erDiagram
         int peringkat
         timestamp created_at
     }
-```
 
 ## 7. Aturan Bisnis & Validasi
 
