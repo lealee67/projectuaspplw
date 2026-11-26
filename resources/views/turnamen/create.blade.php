@@ -6,7 +6,7 @@
 
     <form action="{{ route('turnamen.store') }}" method="POST">
         @csrf
-        @include('turnamen._form')
+        @include('turnamen.form')
     </form>
 </div>
 @endsection

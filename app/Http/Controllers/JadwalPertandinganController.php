@@ -1,16 +1,4 @@
 <?php
-
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-
-class JadwalPertandinganController extends Controller
-{
-    //
-}
-
-<?php
-
 namespace App\Http\Controllers;
 
 use App\Models\JadwalPertandingan;
@@ -32,7 +20,7 @@ class JadwalPertandinganController extends Controller
     // Menambahkan jadwal pertandingan
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'turnamen_id' => 'required|exists:turnamen,id',
             'peserta_1_id' => 'required|exists:pendaftaran,id',
             'peserta_2_id' => 'required|different:peserta_1_id|exists:pendaftaran,id',
@@ -47,7 +35,7 @@ class JadwalPertandinganController extends Controller
             'status' => 'required|string|max:20',
         ]);
 
-        $jadwal = JadwalPertandingan::create($request->all());
+        $jadwal = JadwalPertandingan::create($validated);
 
         return response()->json([
             'message' => 'Jadwal pertandingan berhasil ditambahkan',

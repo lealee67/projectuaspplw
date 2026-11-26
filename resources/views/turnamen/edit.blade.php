@@ -7,7 +7,7 @@
     <form action="{{ route('turnamen.update', $turnamen) }}" method="POST">
         @csrf
         @method('PUT')
-        @include('turnamen._form')
+        @include('turnamen.form')
     </form>
 </div>
 @endsection
