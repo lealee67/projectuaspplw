@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class KategoriKompetisi extends Model
 {
@@ -17,7 +18,7 @@ class KategoriKompetisi extends Model
         'status',
     ];
 
-    public function game()
+    public function game(): BelongsTo
     {
         return $this->belongsTo(Game::class);
     }

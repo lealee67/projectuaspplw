@@ -2,23 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-class JadwalPertandinganController extends Controller
-{
-    //
-}
-
-<?php
-
-namespace App\Http\Controllers;
-
 use App\Models\JadwalPertandingan;
 use Illuminate\Http\Request;
 
 class JadwalPertandinganController extends Controller
 {
-    // Menampilkan seluruh jadwal pertandingan
+    // tampilkan seluruh jadwal pertandingan
     public function index()
     {
         $jadwal = JadwalPertandingan::all();
@@ -29,7 +18,7 @@ class JadwalPertandinganController extends Controller
         ], 200);
     }
 
-    // Menambahkan jadwal pertandingan
+    // menambahkan jadwal pertandingan
     public function store(Request $request)
     {
         $request->validate([
