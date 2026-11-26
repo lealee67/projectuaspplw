@@ -17,7 +17,7 @@ class PanitiaSeeder extends Seeder
 
         User::create([
             'role_id' => $role->id,
-            'nama' => 'Admin ArChamp',
+            'nama' => 'Panitia ArChamp',
             'email' => 'panitia@archamp.test',
             'password' => 'Panitia123!',
         ]);

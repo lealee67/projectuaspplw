@@ -15,6 +15,7 @@ class PendaftaranController extends Controller
 {
     public function create(){
         $turnamen = Turnamen::where('status', 'dibuka')->get();
+        $kategoriKompetisi = KategoriKompetisi::all()->keyBy('id');
 
         return view('pendaftaran.create', compact('turnamen'));
     }
@@ -41,7 +42,7 @@ class PendaftaranController extends Controller
 
     // cari kategori kompetisi
     $kategori = KategoriKompetisi::findOrFail(
-        $pilihanTurnamen->kategori_kompetisi_id
+        $pilihanTurnamen->kategori_id
     );
 
     // cek jumlah anggota
