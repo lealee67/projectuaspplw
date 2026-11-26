@@ -67,13 +67,37 @@ nav a:hover {
 </head>
 <body>
 
+
 <nav>
     <div class="logo">ARCHAMP</div>
 
     <div class="menu">
-        <a href="/">Beranda</a>
-        <a href="/#tentang">Tentang</a>
-        <a href="/#fitur">Fitur</a>
+        @guest
+            <a href="/">Beranda</a>
+            <a href="/#tentang">Tentang</a>
+            <a href="/#fitur">Fitur</a>
+            <a href="{{ route('login') }}">Login</a>
+            <a href="{{ route('register') }}">Registrasi</a>
+        @else
+            @if (session('user_role') === 'Peserta')
+                <a href="{{ route('peserta.dashboard') }}">Dashboard</a>
+                <a href="#">Turnamen</a>
+                <a href="#">Pendaftaran Saya</a>
+                <a href="#">Jadwal Pertandingan</a>
+                <a href="#">Hasil Pertandingan</a>
+                <a href="#">Juara</a>
+
+            @elseif (session('user_role') === 'Panitia')
+                <a href="{{ route('panitia.dashboard') }}">Dashboard</a>
+                <a href="#">Kelola Game</a>
+                <a href="{{ route('kategori-kompetisi.index') }}">Kategori Kompetisi</a>
+                <a href="#">Kelola Turnamen</a>
+                <a href="#">Verifikasi Pendaftaran</a>
+                <a href="#">Jadwal Pertandingan</a>
+                <a href="#">Hasil Pertandingan</a>
+                <a href="#">Penetapan Juara</a>
+            @endif
+        @endguest
     </div>
 </nav>
 

@@ -9,6 +9,14 @@ Route::get('/', function () {
     return view('guest.home');
 });
 
+Route::get('/dashboard/peserta', function () {
+    return view('peserta.dashboard');
+})->name('peserta.dashboard');
+
+Route::get('/dashboard/panitia', function () {
+    return view('panitia.dashboard');
+})->name('panitia.dashboard');
+
 Route::resource('kategori-kompetisi', KategoriKompetisiController::class);
 
 Route::resource('jadwal-pertandingan', JadwalPertandinganController::class);
