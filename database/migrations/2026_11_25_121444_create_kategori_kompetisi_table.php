@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('tipe_peserta', 20);
             $table->unsignedInteger('minimal_anggota');
             $table->unsignedInteger('maksimal_anggota');
-            $table->string('status', 20)->default;
+            $table->string('status', 20)->default('Aktif');
             $table->timestamps();
         });
     }
