@@ -7,6 +7,7 @@ use App\Models\User;
 
 class Pendaftaran extends Model
 {
+    protected $table = 'pendaftaran';
      protected $fillable = [
         'turnamen_id',
         'user_id',

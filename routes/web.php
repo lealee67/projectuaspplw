@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -9,6 +10,8 @@ use App\Http\Controllers\KategoriKompetisiController;
 use App\Http\Controllers\JadwalPertandinganController;
 use App\Http\Controllers\HasilPertandinganController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PenetapanJuaraController;
+use App\Http\Controllers\TurnamenController;
 
 // halaman utama
 Route::get('/', function () {
@@ -43,6 +46,19 @@ Route::middleware(['auth', 'role:panitia'])->group(function () {
 
     // crud hasil pertandingan
     Route::resource('hasil-pertandingan', HasilPertandinganController::class);
+
+    // crud turnamen
+    Route::resource('turnamen', TurnamenController::class)->except(['show']);
+
+    // penetapan juara
+    Route::prefix('penetapan-juara')
+        ->name('penetapan-juara.')
+        ->group(function () {
+            Route::get('/', [PenetapanJuaraController::class, 'index'])->name('index');
+            Route::get('/{turnamen}', [PenetapanJuaraController::class, 'show'])->name('show');
+            Route::post('/{turnamen}', [PenetapanJuaraController::class, 'store'])->name('store');
+            Route::delete('/{turnamen}', [PenetapanJuaraController::class, 'destroy'])->name('destroy');
+        });
 });
 
 // pendaftaran untuk peserta dan panitia
