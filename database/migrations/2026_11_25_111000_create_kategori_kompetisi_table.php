@@ -13,9 +13,9 @@ return new class extends Migration
             $table->foreignId('game_id')->constrained('games');
             $table->string('nama_kategori', 100);
             $table->string('tipe_peserta', 20);
-            $table->unsignedInteger('minimal_anggota');
-            $table->unsignedInteger('maksimal_anggota');
-            $table->string('status', 20)->default;
+            $table->integer('minimal_anggota');
+            $table->integer('maksimal_anggota');
+            $table->string('status', 20);
             $table->timestamps();
         });
     }
