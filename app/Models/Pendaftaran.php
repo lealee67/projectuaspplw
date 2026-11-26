@@ -23,7 +23,6 @@ class Pendaftaran extends Model
     {
         return $this->belongsTo(User::class);
     }
-
     public function detailPendaftaran()
     {
         return $this->hasMany(DetailPendaftaran::class);
