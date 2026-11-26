@@ -220,6 +220,7 @@ erDiagram
         int peringkat
         timestamp created_at
     }
+```
 
 ## 7. Aturan Bisnis & Validasi
 
