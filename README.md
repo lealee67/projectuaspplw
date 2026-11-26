@@ -100,10 +100,11 @@ Basis data terdiri dari **11 tabel**: 2 pendukung, 3 master, dan 6 tabel transak
 **Urutan migration:**
 `roles` → `users` → `games` → `kategori_kompetisi` → `turnamen` → `pendaftaran` → `detail_pendaftaran` → `verifikasi_pendaftaran` → `jadwal_pertandingan` → `hasil_pertandingan` → `penetapan_juara`
 
+
+
+
 ```mermaid
 erDiagram
-```
-```mermaid
     roles ||--o{ erDiagram
     roles ||--o{ users : memiliki
     games ||--o{ kategori_kompetisi : memiliki
