@@ -15,14 +15,13 @@ Sistem Manajemen Kompetisi & Turnamen Esport — Tugas Project UAS PWBF.
 4. [Alur Kerja Sistem](#4-alur-kerja-sistem)
 5. [Role & Hak Akses](#5-role--hak-akses)
 6. [Struktur Database & ERD](#6-struktur-database--erd)
-7. [Aturan Bisnis & Validasi](#7-aturan-bisnis--validasi)
-8. [Cara Instalasi](#8-cara-instalasi)
-9. [Akun Demo](#9-akun-demo)
-10. [Laporan (Query Builder)](#10-laporan-query-builder)
-11. [Pemetaan ke Persyaratan UAS](#11-pemetaan-ke-persyaratan-uas)
-12. [Pengujian](#12-pengujian)
-13. [Screenshot](#13-screenshot)
-14. [Pembagian Kerja Tim](#14-pembagian-kerja-tim)
+7. [Cara Instalasi](#8-cara-instalasi)
+8. [Akun Demo](#9-akun-demo)
+9. [Laporan (Query Builder)](#10-laporan-query-builder)
+1. [Pemetaan ke Persyaratan UAS](#11-pemetaan-ke-persyaratan-uas)
+11. [Pengujian](#12-pengujian)
+12. [Screenshot](#13-screenshot)
+13. [Pembagian Kerja Tim](#14-pembagian-kerja-tim)
 
 ---
 
@@ -46,11 +45,10 @@ Archamp adalah aplikasi web berbasis Laravel untuk pengelolaan dan pendaftaran t
 
 | Komponen | Teknologi |
 |---|---|
-| Framework | Laravel [VERSI] |
-| Bahasa | PHP [VERSI] |
-| Database | MySQL / MariaDB [VERSI] |
-| Frontend | Blade [+ Bootstrap/Tailwind — ISI SESUAI YANG DIPAKAI] |
-| Lainnya | [ISI JIKA ADA, mis. Laravel Breeze] |
+| Framework | Laravel  |
+| Bahasa | PHP |
+| Database | PgSQL |
+| Frontend | Blade |
 
 ## 4. Alur Kerja Sistem
 
@@ -77,8 +75,8 @@ Peserta (Ketua)            Panitia
 
 | Role | Hak Akses |
 |---|---|
-| Panitia | [ISI: kelola master, verifikasi, jadwal, hasil, juara, laporan] |
-| Peserta (Ketua) | [ISI: lihat turnamen, daftar, lihat status pendaftaran sendiri] |
+| Panitia | kelola master, verifikasi, jadwal, hasil, juara, laporan] |
+| Peserta | lihat turnamen, daftar, lihat status pendaftaran sendiri] |
 
 ## 6. Struktur Database & ERD
 
@@ -234,57 +232,19 @@ erDiagram
 7. `next_match_id` dan `next_match_slot` dipakai untuk meneruskan pemenang ke babak berikutnya.
 8. Data master yang sudah dipakai transaksi tidak boleh dihapus (`restrictOnDelete` + pesan peringatan).
 
-## 8. Cara Instalasi
 
-**Prasyarat:** PHP [VERSI], Composer, MySQL, Node.js [JIKA PERLU]
-
-```bash
-# 1. Clone repository
-git clone [URL_REPO]
-cd [NAMA_FOLDER]
-
-# 2. Install dependency
-composer install
-npm install && npm run build   # jika memakai Vite
-
-# 3. Konfigurasi environment
-cp .env.example .env
-php artisan key:generate
-
-# 4. Atur koneksi database di .env
-#    DB_DATABASE=e_tourney
-#    DB_USERNAME=root
-#    DB_PASSWORD=
-
-# 5. Migrasi dan seeder
-php artisan migrate --seed
-
-# 6. Jalankan aplikasi
-php artisan serve
-```
-
-Buka `http://127.0.0.1:8000`.
-
-## 9. Akun Demo
+## 8. Akun Demo
 
 | Role | Email | Password |
 |---|---|---|
-| Panitia | [ISI] | [ISI] |
-| Peserta (Ketua) | [ISI] | [ISI] |
+| Panitia | panitia@archamp.test | Panitia123! |
+| Peserta | peserta@test.com | Peserta123! |
 
-> Akun dibuat oleh seeder. Hanya untuk demo, jangan dipakai di produksi.
+## 9. Laporan (Query Builder)
 
-## 10. Laporan (Query Builder)
 
-Laporan dibuat dengan `DB::table()` (Query Builder).
 
-| Laporan | Deskripsi | Route |
-|---|---|---|
-| Jumlah peserta per turnamen | [ISI] | [ISI] |
-| Rekap turnamen per game | [ISI] | [ISI] |
-| Rekap hasil pertandingan & juara | [ISI] | [ISI] |
-
-## 11. Pemetaan ke Persyaratan UAS
+## 10. Pemetaan ke Persyaratan UAS
 
 | Persyaratan | Implementasi |
 |---|---|
@@ -294,9 +254,8 @@ Laporan dibuat dengan `DB::table()` (Query Builder).
 | Pola header-detail | `pendaftaran` + `detail_pendaftaran` |
 | Dua role dalam alur | Peserta mendaftar (T1) → Panitia verifikasi (T2) |
 | Transaksi mengubah data lain | Verifikasi → status `pendaftaran`; Hasil → status `jadwal_pertandingan` |
-| Laporan Query Builder | Lihat [bagian 10](#10-laporan-query-builder) |
 
-## 12. Pengujian
+## 11. Pengujian
 
 Skenario yang diuji:
 
@@ -311,13 +270,7 @@ Skenario yang diuji:
 | 7 | Akses halaman panitia oleh peserta | Ditolak (403/redirect) | [ ] |
 | 8 | Peringkat juara dobel pada satu turnamen | Ditolak | [ ] |
 
-Menjalankan test otomatis (jika ada):
-
-```bash
-php artisan test
-```
-
-## 13. Screenshot
+## 12. Screenshot
 
 | Halaman | Gambar |
 |---|---|
@@ -327,10 +280,10 @@ php artisan test
 | Bracket / Jadwal | ![Jadwal](docs/screenshots/jadwal.png) |
 | Laporan | ![Laporan](docs/screenshots/laporan.png) |
 
-## 14. Pembagian Kerja Tim
+## 13. Pembagian Kerja Tim
 
 | Anggota | NIM | Data Master | Transaksi | Tanggung Jawab Tambahan |
 |---|---|---|---|---|
-| [NAMA 1] | [NIM] | `games` | T1 Pendaftaran, T2 Verifikasi | Setup repo, autentikasi, RBAC, seeder akun |
-| [NAMA 2] | [NIM] | `kategori_kompetisi` | T3 Jadwal, T4 Hasil | Layout Blade, halaman guest, dashboard |
-| [NAMA 3] | [NIM] | `turnamen` | T5 Penetapan Juara | Testing, laporan Query Builder, README, dokumentasi ERD |
+| Alexandra Chetisza Avertha W | 434251098 | `games` | T1 Pendaftaran, T2 Verifikasi | Setup repo, autentikasi, RBAC, seeder akun |
+|  Keyza Aluna Tsabitha | 434251099 | `kategori_kompetisi` | T3 Jadwal, T4 Hasil | Layout Blade, halaman guest, dashboard |
+| Allysha Zavira Dahwanty | 434251100 | `turnamen` | T5 Penetapan Juara | Testing, laporan Query Builder, README, dokumentasi ERD |
