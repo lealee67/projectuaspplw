@@ -102,6 +102,8 @@ Basis data terdiri dari **11 tabel**: 2 pendukung, 3 master, dan 6 tabel transak
 
 ```mermaid
 erDiagram
+```
+```mermaid
     roles ||--o{ erDiagram
     roles ||--o{ users : memiliki
     games ||--o{ kategori_kompetisi : memiliki
