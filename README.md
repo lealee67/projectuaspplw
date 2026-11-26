@@ -1,4 +1,4 @@
-# E-Tourney
+# Archamp
 
 Sistem Manajemen Kompetisi & Turnamen Esport — Tugas Project UAS PWBF.
 
@@ -28,7 +28,7 @@ Sistem Manajemen Kompetisi & Turnamen Esport — Tugas Project UAS PWBF.
 
 ## 1. Deskripsi Proyek
 
-E-Tourney adalah aplikasi web berbasis Laravel untuk pengelolaan dan pendaftaran turnamen e-sports secara terstruktur, mulai dari manajemen data game, kategori kompetisi, dan turnamen, hingga alur pendaftaran peserta/tim (pola header-detail), verifikasi panitia, penyusunan jadwal & bracket single elimination, pencatatan skor pertandingan, serta penetapan juara.
+Archamp adalah aplikasi web berbasis Laravel untuk pengelolaan dan pendaftaran turnamen e-sports secara terstruktur, mulai dari manajemen data game, kategori kompetisi, dan turnamen, hingga alur pendaftaran peserta/tim (pola header-detail), verifikasi panitia, penyusunan jadwal & bracket single elimination, pencatatan skor pertandingan, serta penetapan juara.
 
 ## 2. Fitur Utama
 
